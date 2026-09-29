@@ -2,6 +2,7 @@
   "site": {
     "name": "caramel.dog",
     "mirror": "caramel.horse",
+    "repo": "https://github.com/caramelpony/site/",
     "tagline": "gay linux nerd cat",
     "owner": "Caramel",
     "dob": "2000-10-25",
@@ -37,13 +38,13 @@
     {
       "id": "blog",
       "label": "Blog ↗",
-      "href": "https://blog.caramel.dog",
+      "href": "#",
       "key": "05"
     },
     {
       "id": "store",
       "label": "Store ↗",
-      "href": "https://store.caramel.dog",
+      "href": "#",
       "key": "06"
     },
     {
@@ -103,7 +104,7 @@
       "status": "live",
       "year": "2026",
       "desc": "A page full of little quirky utilities for nerds.",
-      "href": "#",
+      "href": "https://utils.caramel.dog",
       "color": "bg-mint"
     },
     {
@@ -111,7 +112,7 @@
       "status": "wip",
       "year": "2024",
       "desc": "An alternative to Barq, social networking for furries.",
-      "href": "#",
+      "href": "https://furs.gg",
       "color": "bg-sky"
     },
     {
@@ -119,7 +120,7 @@
       "status": "archived",
       "year": "2023",
       "desc": "Attempt to apply for a .fur gTLD. Check out dotfurry.org instead.",
-      "href": "#",
+      "href": "https://dotfurry.org/",
       "color": "bg-rose"
     }
   ],
@@ -251,8 +252,8 @@
     "links": [
       {
         "label": "GitHub",
-        "handle": "@caramel",
-        "href": "https://github.com/",
+        "handle": "@caramelpony",
+        "href": "https://github.com/caramelpony",
         "color": "bg-lemon"
       },
       {
@@ -307,8 +308,8 @@
     },
     {
       "label": "Blog",
-      "handle": "blog.caramel.dog",
-      "href": "https://blog.caramel.dog",
+      "handle": "coming soon",
+      "href": "#",
       "color": "bg-caramel"
     }
   ],

@@ -2,7 +2,7 @@
 <footer class="block-box grid font-mono text-xs sm:grid-cols-4 [&>p]:p-3 [&>p+p]:max-sm:border-t-2 [&>p+p]:sm:border-l-2">
   <p>© {{site.year}} {{site.owner}}</p>
   <p>built {{build.date}}</p>
-  <p>commit <b>{{build.commit}}</b></p>
+  <p>commit <if condition="build.commitUrl"><a href="{{build.commitUrl}}" class="font-bold">{{build.commit}} ↗</a></if><if condition="!build.commitUrl"><b>{{build.commit}}</b></if></p>
   <p title="{{weight.raw}} kB uncompressed: this page + stylesheet">{{weight.gz}} kB page · 0 kB js</p>
 </footer>
 </template>

@@ -17,15 +17,15 @@ function ageOn(dob, date) {
   return date.getUTCFullYear() - y - (hadBirthday ? 0 : 1);
 }
 
-// Commit id: CI env var first (COMMIT_SHA, or Cloudflare Workers Builds'
-// WORKERS_CI_COMMIT_SHA), then local git, else "dev".
-function commitId() {
+// Full commit hash: CI env var first (COMMIT_SHA, or Cloudflare Workers Builds'
+// WORKERS_CI_COMMIT_SHA), then local git, else "" (not built from a commit).
+function commitSha() {
   const fromEnv = process.env.COMMIT_SHA || process.env.WORKERS_CI_COMMIT_SHA;
-  if (fromEnv) return fromEnv.slice(0, 7);
+  if (fromEnv) return fromEnv;
   try {
-    return execFileSync("git", ["rev-parse", "--short", "HEAD"], { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
+    return execFileSync("git", ["rev-parse", "HEAD"], { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
   } catch {
-    return "dev";
+    return "";
   }
 }
 
@@ -47,7 +47,13 @@ const site = JSON.parse(raw.replace(/\{([\w-]+)\}/g, (m, k) => (k in tokens ? JS
 if (unknown.size) throw new Error(`unknown token(s) in data/site.json: ${[...unknown].join(", ")}`);
 delete site.site.dob;
 site.age = tokens.age;
-site.build = { date: now.toISOString().slice(0, 16).replace("T", " ") + " UTC", commit: commitId() };
+// Footer: short commit id, linked to that commit in site.repo when both are known.
+const sha = commitSha();
+site.build = {
+  date: now.toISOString().slice(0, 16).replace("T", " ") + " UTC",
+  commit: sha ? sha.slice(0, 7) : "dev",
+  commitUrl: sha && site.site.repo ? `${site.site.repo.replace(/\/+$/, "")}/commit/${sha}` : "",
+};
 // Uptime: a service without `hours` renders as a skeleton bar. Once real data from
 // status.caramel.dog is wired in, give each service 24 entries, oldest first:
 // { label: "14:00 UTC", state: "up" | "degraded" | "down" }.
