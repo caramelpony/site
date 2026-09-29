@@ -34,7 +34,7 @@ Drop 88×31 originals (png, gif, webp or jpg) into `badges/`. The build (`badges
 - shrinks oversized badges to 88×31 when that can be done cleanly:
   - exact whole multiples (176×62, …) are shrunk pixel-perfectly (nearest-neighbour);
   - badges larger than 88×31 with nearly the same shape (within 2%, e.g. 100×35) are shrunk smoothly (Lanczos). The build logs a warning, and may use a 16-colour PNG if it's visually identical;
-- fails if a badge is over 4 kB after compression, the whole wall is over 96 kB, or a badge is smaller than 88×31 or a different shape.
+- fails if a badge is over 5 kB after compression, the whole wall is over 96 kB, or a badge is smaller than 88×31 or a different shape.
 
 Home shows up to 3 badges from `home.badges` (e.g. `"{badge-mspaint}"`), inlined into the HTML so there are no extra requests; empty slots show as skeletons. `/88x31/` (unlisted, noindex) lists every badge, lazy-loaded. To add a link or alt text, add `"buttons": [{ "badge": "mspaint", "href": "https://…", "alt": "…" }]`.
 

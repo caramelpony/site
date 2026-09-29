@@ -12,7 +12,7 @@ import { extname, basename, join } from "node:path";
 
 const SRC = "badges";
 const URL_BASE = "/badges"; // served from dist/badges/, cached forever (see public/_headers)
-const MAX_BADGE = 4 * 1024; // bytes, per encoded badge (animated + still)
+const MAX_BADGE = 5 * 1024; // bytes, per encoded badge (animated + still)
 const MAX_WALL = 96 * 1024; // bytes, all badges together
 const INPUTS = new Set([".png", ".gif", ".webp", ".jpg", ".jpeg"]);
 
