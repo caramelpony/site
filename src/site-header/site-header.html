@@ -1,0 +1,27 @@
+<template>
+<header class="flex flex-col gap-4">
+  <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+  <div class="block-box grid sm:grid-cols-[1fr_auto]">
+    <a href="/" class="block p-4 no-underline sm:p-5">
+      <span class="block font-mono text-xs uppercase tracking-widest text-mute">~/{{page}}</span>
+      <span class="block text-4xl font-black tracking-tight sm:text-5xl">{{site.name}}</span>
+      <span class="block text-sm text-mute">{{site.tagline}}</span>
+    </a>
+    <div class="flex items-end border-t-2 border-ink bg-caramel p-4 font-mono text-xs uppercase leading-tight sm:border-t-0 sm:border-l-2">
+      <span>est. {{site.year}}<br>also at {{site.mirror}}</span>
+    </div>
+  </div>
+  <nav aria-label="Site">
+    <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+      <for each="link in nav">
+        <li class="max-sm:last:col-span-2">
+          <a href="{{link.href}}" ?data-active="{{link.id == page}}" class="nav-link">{{link.label}}<i>{{link.key}}</i></a>
+        </li>
+      </for>
+    </ul>
+  </nav>
+  <div class="block-box overflow-hidden bg-lemon py-1 font-mono text-xs uppercase" aria-hidden="true">
+    <div class="ticker-track flex w-max whitespace-pre"><span>{{ticker}}</span><span>{{ticker}}</span></div>
+  </div>
+</header>
+</template>

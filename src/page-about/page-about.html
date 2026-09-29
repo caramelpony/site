@@ -1,0 +1,31 @@
+<template>
+<div class="grid gap-5 md:grid-cols-3">
+  <section class="block-box md:col-span-2">
+    <div class="block-bar bg-sky"><span>about.txt</span><span>02</span></div>
+    <div class="space-y-4 p-5 text-lg leading-relaxed sm:p-6">
+      <h1>About</h1>
+      <for each="p in about.paragraphs"><p class="max-w-prose">{{p}}</p></for>
+    </div>
+  </section>
+
+  <div class="grid content-start gap-5">
+    <section class="block-box">
+      <div class="block-bar bg-lemon"><span>fast facts</span><span>i</span></div>
+      <dl class="rows text-sm">
+        <for each="f in about.facts">
+          <div class="grid grid-cols-[6rem_1fr] gap-2 px-4 py-2"><dt class="font-mono text-mute">{{f.k}}</dt><dd>{{f.v}}</dd></div>
+        </for>
+      </dl>
+    </section>
+
+    <section class="block-box">
+      <div class="block-bar bg-rose"><span>elsewhere</span><span>@</span></div>
+      <ul class="rows text-sm">
+        <for each="l in socials">
+          <li><a href="{{l.href}}" rel="me" class="link-row hover:bg-ink hover:text-paper"><b class="{{l.color}}">{{l.label}}</b><span>{{l.handle}}</span><i>→</i></a></li>
+        </for>
+      </ul>
+    </section>
+  </div>
+</div>
+</template>

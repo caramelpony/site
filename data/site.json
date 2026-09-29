@@ -1,0 +1,316 @@
+{
+  "site": {
+    "name": "caramel.dog",
+    "mirror": "caramel.horse",
+    "tagline": "gay linux nerd cat",
+    "owner": "Caramel",
+    "dob": "2000-10-25",
+    "pronouns": "she/her/it/its",
+    "gender": "fingender",
+    "year": "2026"
+  },
+  "nav": [
+    {
+      "id": "home",
+      "label": "Home",
+      "href": "/",
+      "key": "01"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "href": "/about/",
+      "key": "02"
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "href": "/projects/",
+      "key": "03"
+    },
+    {
+      "id": "cv",
+      "label": "CV",
+      "href": "/cv/",
+      "key": "04"
+    },
+    {
+      "id": "blog",
+      "label": "Blog ↗",
+      "href": "https://blog.caramel.dog",
+      "key": "05"
+    },
+    {
+      "id": "store",
+      "label": "Store ↗",
+      "href": "https://store.caramel.dog",
+      "key": "06"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "href": "/contact/",
+      "key": "07"
+    }
+  ],
+  "ticker": "woof woof! · 💼 hiring? see /cv · invite me to your webring · no 🍪, no js, crazy fast · best viewed in any browser · page size measured in kilobytes · ",
+  "home": {
+    "intro": [
+      "Hi, I'm Caramel. I make things and write occasionally write about them.",
+      "I'm {age}, 🇬🇷 & 🇺🇸, I'm {gender} and use {pronouns}. "
+    ],
+    "updates": [
+      {
+        "date": "2026-09-28",
+        "text": "Relaunched personal site, rebuilt with WebUI + Tailwind."
+      }
+    ],
+    "badges": [
+      "{badge-mspaint}",
+      "{badge-twopaws}",
+      "{badge-vscodium}"
+    ],
+    "feed": "/feed.rss"
+  },
+  "about": {
+    "paragraphs": [
+      "I'm Caramel, a {age}-year-old systems engineer by trade, developer by hobby, and chronically online.",
+      "I'm a sterotypical transfemme linux nerd, and a furry (obviously). ",
+      "My interests include homelabs, systems architecting, and anything telecoms-related. "
+    ],
+    "facts": [
+      {
+        "k": "Age",
+        "v": "{age}"
+      },
+      {
+        "k": "Based in",
+        "v": "Texas (for now :<)"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "caramel.dog",
+      "status": "live",
+      "year": "2026",
+      "desc": "This website. Crazy fast static HTML rendered by WebUI, styled with Tailwind, zero client JS.",
+      "href": "/",
+      "color": "bg-caramel"
+    },
+    {
+      "name": "Utils",
+      "status": "live",
+      "year": "2026",
+      "desc": "A page full of little quirky utilities for nerds.",
+      "href": "#",
+      "color": "bg-mint"
+    },
+    {
+      "name": "furs.gg",
+      "status": "wip",
+      "year": "2024",
+      "desc": "An alternative to Barq, social networking for furries.",
+      "href": "#",
+      "color": "bg-sky"
+    },
+    {
+      "name": "DotFur",
+      "status": "archived",
+      "year": "2023",
+      "desc": "Attempt to apply for a .fur gTLD. Check out dotfurry.org instead.",
+      "href": "#",
+      "color": "bg-rose"
+    }
+  ],
+  "cv": {
+    "summary": "Network and Systems Engineer | BGP, IPv6, and Linux Infrastructure",
+    "intro": "Network and systems engineer with a security focus: firewall and network administration, firmware validation, and production troubleshooting. Founder of Saddle Networks, operating AS33711. Linux user since 2013, Hurricane Electric IPv6 Sage, and I build software in Python, Bash, Rust, Go, and Node.js.",
+    "jobs": [
+      {
+        "when": "Aug 2021 – now",
+        "role": "Founder & Principal Systems Engineer",
+        "org": "Saddle Networks",
+        "points": [
+          "Design and maintain infrastructure spanning networking, virtualization, and transit provisioning.",
+          "Operate the company's BGP autonomous system, AS33711 (128.254.224.0/22, 2602:fbec::/32).",
+          "Build internal automation in Python and Bash; enforce security policy across client systems."
+        ]
+      },
+      {
+        "when": "Sep 2022 – May 2023",
+        "role": "Systems Engineer III",
+        "org": "Charter Communications",
+        "points": [
+          "Final escalation tier for vulnerability investigation, firmware validation, and regression testing on OpenWRT-based CPE.",
+          "Reproduced production-critical defects hands-on to find root cause.",
+          "Built and ran TestRail test plans central to the release process; tracked remediation in Jira."
+        ]
+      },
+      {
+        "when": "Oct 2021 – Dec 2021",
+        "role": "Contract Network Engineer I",
+        "org": "OSCTechnical",
+        "points": [
+          "Administered Fortigate firewalls, Aruba wireless, and Meraki environments.",
+          "Applied security configurations and coordinated incident response."
+        ]
+      }
+    ],
+    "building": [
+      {
+        "lang": "Rust",
+        "what": "A modern IRRd (Internet Routing Registry daemon) replacement"
+      },
+      {
+        "lang": "Go",
+        "what": "Web servers"
+      },
+      {
+        "lang": "Node.js",
+        "what": "Discord bot, websites, and SPAs"
+      },
+      {
+        "lang": "Mobile",
+        "what": "Apps published on the App Store and Google Play"
+      }
+    ],
+    "skills": [
+      {
+        "group": "Networking",
+        "items": [
+          "BGP",
+          "IPv4",
+          "IPv6",
+          "NDP / SLAAC / DHCPv6",
+          "DHCP",
+          "SNMP",
+          "STP / RSTP",
+          "Cisco IOS"
+        ]
+      },
+      {
+        "group": "Security",
+        "items": [
+          "Fortigate",
+          "Meraki",
+          "Aruba",
+          "Network policy",
+          "Vuln analysis",
+          "Incident response"
+        ]
+      },
+      {
+        "group": "Systems",
+        "items": [
+          "Linux (2013+)",
+          "Debian",
+          "Ubuntu",
+          "Alpine",
+          "NixOS",
+          "OpenWRT",
+          "Virtualization"
+        ]
+      },
+      {
+        "group": "Code",
+        "items": [
+          "Python",
+          "Bash",
+          "Rust",
+          "Go",
+          "Node.js",
+          "JavaScript",
+          "Java"
+        ]
+      },
+      {
+        "group": "Process",
+        "items": [
+          "TestRail",
+          "Jira",
+          "QA / regression",
+          "Tech docs"
+        ]
+      }
+    ],
+    "certs": [
+      "Hurricane Electric IPv6 Certification: Sage",
+      "CyberPatriots 2016 semi-finalist"
+    ],
+    "education": [
+      {
+        "when": "2021 – now",
+        "what": "Austin Community College, Computer Science / LANs"
+      }
+    ]
+  },
+  "contact": {
+    "note": "Best way to reach me is email. I read everything, reply to most.",
+    "email": "hello@caramel.dog",
+    "links": [
+      {
+        "label": "GitHub",
+        "handle": "@caramel",
+        "href": "https://github.com/",
+        "color": "bg-lemon"
+      },
+      {
+        "label": "RSS",
+        "handle": "feed.rss",
+        "href": "/feed.rss",
+        "color": "bg-lemon"
+      }
+    ]
+  },
+  "status": {
+    "href": "https://status.caramel.dog",
+    "services": [
+      {
+        "name": "web"
+      },
+      {
+        "name": "git"
+      },
+      {
+        "name": "file server"
+      },
+      {
+        "name": "mail"
+      }
+    ]
+  },
+  "socials": [
+    {
+      "label": "Bluesky",
+      "handle": "@caramel.dog",
+      "href": "https://bsky.app/profile/caramel.dog",
+      "color": "bg-sky"
+    },
+    {
+      "label": "Twitter",
+      "handle": "@carameldotcat",
+      "href": "https://twitter.com/carameldotcat",
+      "color": "bg-mute/40"
+    },
+    {
+      "label": "Telegram",
+      "handle": "@caramelpup",
+      "href": "https://t.me/caramelpup",
+      "color": "bg-mint"
+    },
+    {
+      "label": "Fediverse",
+      "handle": "coming soon",
+      "href": "#",
+      "color": "bg-rose"
+    },
+    {
+      "label": "Blog",
+      "handle": "blog.caramel.dog",
+      "href": "https://blog.caramel.dog",
+      "color": "bg-caramel"
+    }
+  ],
+  "buttons": []
+}

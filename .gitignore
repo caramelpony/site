@@ -1,0 +1,21 @@
+# dependencies and build output
+node_modules/
+dist/
+
+# logs
+*.log
+npm-debug.log*
+
+# env / secrets
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# private documents
+*.pdf

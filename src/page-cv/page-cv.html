@@ -1,0 +1,56 @@
+<template>
+<div class="grid gap-5 md:grid-cols-3">
+  <section class="block-box md:col-span-3">
+    <div class="block-bar bg-lemon"><span>cv.txt</span><span>04</span></div>
+    <div class="p-5 sm:p-6">
+      <h1>CV / Work history</h1>
+      <p class="mt-1 font-mono text-sm text-mute">{{cv.summary}}</p>
+      <p class="mt-3 leading-relaxed">{{cv.intro}}</p>
+    </div>
+  </section>
+
+  <section class="block-box md:col-span-3">
+    <div class="block-bar bg-sky"><span>skills</span><span>*</span></div>
+    <div class="grid gap-px bg-ink sm:grid-cols-2 lg:grid-cols-5">
+      <for each="g in cv.skills">
+        <div class="bg-card p-4">
+          <h2 class="font-mono text-xs uppercase tracking-widest text-mute">{{g.group}}</h2>
+          <ul class="dots mt-2 text-sm leading-relaxed"><for each="s in g.items"><li>{{s}}</li></for></ul>
+        </div>
+      </for>
+    </div>
+  </section>
+
+  <section class="block-box md:col-span-2">
+    <div class="block-bar"><span>experience</span><span>{{cv.jobs.length}}</span></div>
+    <ol class="rows">
+      <for each="j in cv.jobs">
+        <li class="p-4 sm:px-5">
+          <p class="font-mono text-sm text-mute">{{j.when}}</p>
+          <h2 class="font-black">{{j.role}} <span class="font-normal text-mute">@ {{j.org}}</span></h2>
+          <ul class="arrows mt-2"><for each="pt in j.points"><li>{{pt}}</li></for></ul>
+        </li>
+      </for>
+    </ol>
+  </section>
+
+  <div class="grid content-start gap-5">
+    <section class="block-box">
+      <div class="block-bar bg-rose"><span>things i build</span><span>src/</span></div>
+      <ul class="rows text-sm">
+        <for each="b in cv.building"><li class="px-4 py-2"><b class="font-mono">{{b.lang}}</b><br>{{b.what}}</li></for>
+      </ul>
+    </section>
+    <section class="block-box">
+      <div class="block-bar bg-caramel"><span>certs</span><span>✓</span></div>
+      <ul class="arrows p-4 text-sm"><for each="c in cv.certs"><li>{{c}}</li></for></ul>
+    </section>
+    <section class="block-box">
+      <div class="block-bar bg-mint"><span>education</span><span>edu</span></div>
+      <ul class="p-4 text-sm">
+        <for each="e in cv.education"><li><span class="font-mono text-mute">{{e.when}}</span><br>{{e.what}}</li></for>
+      </ul>
+    </section>
+  </div>
+</div>
+</template>

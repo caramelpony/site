@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pageTitle}} · {{site.name}}</title>
+  <meta name="description" content="{{site.tagline}}">
+  <if condition="noindex"><meta name="robots" content="noindex"></if>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+  <link rel="alternate" type="application/rss+xml" title="{{site.name}}" href="{{home.feed}}">
+</head>
+<body>
+  <div class="mx-auto flex min-h-dvh max-w-5xl flex-col gap-5 px-4 py-6 sm:py-10">
+    <site-header></site-header>
+    <main id="main" class="flex-1">
+      <if condition="page == 'home'"><page-home></page-home></if>
+      <if condition="page == 'about'"><page-about></page-about></if>
+      <if condition="page == 'projects'"><page-projects></page-projects></if>
+      <if condition="page == 'cv'"><page-cv></page-cv></if>
+      <if condition="page == 'contact'"><page-contact></page-contact></if>
+      <if condition="page == '88x31'"><page-buttons></page-buttons></if>
+      <if condition="page == '404'">
+        <section class="block-box">
+          <div class="block-bar bg-rose"><span>error.txt</span><span>404</span></div>
+          <div class="p-6">
+            <p class="font-mono text-6xl font-black">404</p>
+            <p class="mt-2">This page wandered off. <a href="/">Go home</a>.</p>
+          </div>
+        </section>
+      </if>
+    </main>
+    <site-footer></site-footer>
+  </div>
+</body>
+</html>

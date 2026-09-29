@@ -1,0 +1,26 @@
+<template>
+<div class="grid gap-5">
+  <section class="block-box">
+    <div class="block-bar bg-rose"><span>projects/</span><span>{{projects.length}} items</span></div>
+    <div class="p-5 sm:p-6">
+      <h1>Projects</h1>
+      <p class="mt-2 text-mute">Things I've made, am making, or have lovingly abandoned.</p>
+    </div>
+  </section>
+
+  <ul class="grid gap-5 sm:grid-cols-2">
+    <for each="p in projects">
+      <li class="flex">
+        <a href="{{p.href}}" class="block-box lift-sm flex flex-1 flex-col">
+          <div class="block-bar {{p.color}}"><span>{{p.year}}</span><span>[{{p.status}}]</span></div>
+          <div class="flex flex-1 flex-col gap-2 p-4">
+            <h2 class="text-xl font-black">{{p.name}}</h2>
+            <p class="flex-1">{{p.desc}}</p>
+            <span class="font-mono text-sm font-bold underline decoration-2 underline-offset-2">open →</span>
+          </div>
+        </a>
+      </li>
+    </for>
+  </ul>
+</div>
+</template>

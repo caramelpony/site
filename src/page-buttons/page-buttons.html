@@ -1,0 +1,28 @@
+<template>
+<div class="grid gap-5">
+  <section class="block-box">
+    <div class="block-bar bg-lemon"><span>88x31/</span><span>{{buttons.length}} total</span></div>
+    <div class="p-5 sm:p-6">
+      <h1>88×31</h1>
+      <p class="mt-2 text-mute">You found the button wall. Friends, sites I like, and things I believe in.</p>
+    </div>
+  </section>
+
+  <section class="block-box">
+    <div class="block-bar"><span>the wall</span><span>88×31</span></div>
+    <if condition="buttons.length > 0">
+      <ul class="flex flex-wrap gap-2 p-4">
+        <for each="b in buttons">
+          <li>
+            <if condition="b.href"><a href="{{b.href}}" title="{{b.alt}}" class="block"><picture><if condition="b.still"><source media="(prefers-reduced-motion: reduce)" srcset="{{b.still}}"></if><img class="badge" src="{{b.src}}" alt="{{b.alt}}" width="88" height="31" loading="lazy" decoding="async"></picture></a></if>
+            <if condition="!b.href"><picture><if condition="b.still"><source media="(prefers-reduced-motion: reduce)" srcset="{{b.still}}"></if><img class="badge" src="{{b.src}}" alt="{{b.alt}}" width="88" height="31" loading="lazy" decoding="async"></picture></if>
+          </li>
+        </for>
+      </ul>
+    </if>
+    <if condition="buttons.length == 0">
+      <p class="p-4 font-mono text-sm text-mute">under construction. check back soon.</p>
+    </if>
+  </section>
+</div>
+</template>

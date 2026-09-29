@@ -1,0 +1,111 @@
+/* Tailwind theme + utilities only. Its preflight reset is swapped for the small
+   one below: preflight is ~4.7 kB, and this site uses a handful of elements. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../";
+@source "../../data";
+
+@theme {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --color-paper: light-dark(#f3ecdf, #16130f);
+  --color-card: light-dark(#fffaf1, #221d17);
+  --color-ink: light-dark(#17130f, #f3ecdf);
+  --color-mute: light-dark(#6b5f52, #a89a88);
+  --color-faint: light-dark(#6b5f524d, #a89a884d);
+  --color-caramel: #d0843a;
+  --color-mint: light-dark(#8fd4b4, #2f7a5c);
+  --color-sky: light-dark(#9cc6f0, #2d5f91);
+  --color-rose: light-dark(#f2a7b8, #8e3a52);
+  --color-lemon: light-dark(#f5dc6e, #8a7420);
+}
+
+@layer base {
+  *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
+  html { color-scheme: light dark; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  site-header, site-footer, page-home, page-about, page-projects, page-cv, page-contact, page-buttons { display: block; }
+  h1, h2, h3 { font-size: inherit; font-weight: inherit; }
+  h1 { font-size: 1.875rem; line-height: 1.2; font-weight: 900; letter-spacing: -0.025em; }
+  ol, ul { list-style: none; }
+  b { font-weight: 700; }
+  i { font-style: normal; }
+  svg { display: block; }
+  a { color: inherit; text-decoration: underline 2px; text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--color-caramel); }
+  ::selection { background: var(--color-caramel); color: var(--color-ink); }
+  :focus-visible { outline: 3px solid var(--color-caramel); outline-offset: 2px; }
+}
+
+/* Reusable pieces, in plain CSS. Named once here instead of repeating long class
+   strings in every page's HTML, which was most of each page's weight. */
+@layer components {
+  /* A "block": the one building unit of the site. Hard border, hard shadow. */
+  .block-box, .nav-link, .tile { border: 2px solid var(--color-ink); background: var(--color-card); box-shadow: 4px 4px 0 var(--color-ink); }
+
+  /* Title bar on top of a block, like old window chrome. */
+  .block-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+    border-bottom: 2px solid var(--color-ink); padding: .25rem .75rem;
+    font: .75rem/1rem var(--font-mono); text-transform: uppercase; letter-spacing: .1em;
+  }
+
+  /* A block that lifts toward the cursor. */
+  .lift, .nav-link, .tile { text-decoration: none; transition: translate .1s, box-shadow .1s; }
+  .lift:hover, .nav-link:hover, .tile:hover { translate: -2px -2px; box-shadow: 6px 6px 0 var(--color-ink); }
+
+  /* Same lift, toned down, for big cards. */
+  .lift-sm { text-decoration: none; transition: translate .1s, box-shadow .1s; }
+  .lift-sm:hover { translate: -1px -1px; box-shadow: 5px 5px 0 var(--color-ink); }
+
+  .nav-link { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .5rem .75rem; font-weight: 700; }
+  .nav-link > i { font: 10px var(--font-mono); opacity: .6; }
+  .nav-link[data-active] { background: var(--color-ink); color: var(--color-paper); }
+
+  .tile { display: block; padding: 1rem; font-size: 1.25rem; font-weight: 900; }
+  .tile > i { display: block; font: .75rem var(--font-mono); }
+
+  /* Labelled link row: [LABEL | handle | →]. */
+  .link-row { display: grid; grid-template-columns: 6rem 1fr auto; align-items: center; text-decoration: none; }
+  .link-row > b { align-self: stretch; border-right: 2px solid var(--color-ink); padding: .5rem .75rem; font: 700 11px var(--font-mono); text-transform: uppercase; display: flex; align-items: center; }
+  .link-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 .75rem; }
+  .link-row > i { padding: 0 .75rem; font-family: var(--font-mono); }
+
+  /* List with → markers that sit inside the content box. */
+  .arrows > li { position: relative; padding-left: 1.25rem; }
+  .arrows > li::before { content: "→"; position: absolute; left: 0; color: var(--color-mute); }
+  .arrows > li + li { margin-top: .25rem; }
+
+  /* Inline list separated by middots. */
+  .dots > li { display: inline; }
+  .dots > li:not(:last-child)::after { content: "\a0· "; color: var(--color-mute); }
+
+  /* Table-ish rows divided by rules. */
+  .rows > * + * { border-top: 2px solid var(--color-ink); }
+
+  /* CSS-only ticker. */
+  .ticker-track { animation: ticker 30s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  /* Uptime bar: 24 hourly segments. With no data it's one element drawn as a
+     pulsing striped skeleton; with data, one <i data-state> per hour. */
+  .uptime { display: grid; grid-template-columns: repeat(24, 1fr); gap: 1px; height: 1rem; margin-top: .25rem; }
+  .uptime:empty { background: repeating-linear-gradient(90deg, var(--color-faint) 0 calc(100% / 24 - 1px), #0000 0 calc(100% / 24)); }
+  .uptime:empty, .uptime > i { animation: pulse 2s ease-in-out infinite; }
+  .uptime > i { background: var(--color-faint); }
+  .uptime > [data-state="up"] { background: var(--color-mint); animation: none; }
+  .uptime > [data-state="degraded"] { background: var(--color-lemon); animation: none; }
+  .uptime > [data-state="down"] { background: var(--color-rose); animation: none; }
+
+  /* 88x31 buttons: crisp pixels at any zoom; empty slots are pulsing skeletons. */
+  .badge { display: block; image-rendering: pixelated; }
+  .skel-88 { display: block; width: 88px; height: 31px; border: 2px dashed var(--color-faint); animation: pulse 2s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lift, .lift-sm, .nav-link, .tile, .ticker-track, .skel-88, .uptime:empty, .uptime > i { transition: none; animation: none; }
+  }
+}
+
+@keyframes ticker { to { transform: translateX(-50%); } }
+@keyframes pulse { 50% { opacity: .5; } }
