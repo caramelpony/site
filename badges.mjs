@@ -11,7 +11,7 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { extname, basename, join } from "node:path";
 
 const SRC = "badges";
-const URL_BASE = "/88x31";
+const URL_BASE = "/badges"; // served from dist/badges/, cached forever (see public/_headers)
 const MAX_BADGE = 4 * 1024; // bytes, per encoded badge (animated + still)
 const MAX_WALL = 96 * 1024; // bytes, all badges together
 const INPUTS = new Set([".png", ".gif", ".webp", ".jpg", ".jpeg"]);
@@ -84,7 +84,7 @@ function emit(outDir, name, { ext, buf }) {
   return { url: `${URL_BASE}/${file}`, dataUri: `data:${mime};base64,${buf.toString("base64")}`, bytes: buf.length };
 }
 
-/** Build every badge into `<distDir>/88x31/`. Returns { [name]: badge }. */
+/** Build every badge into `<distDir>/badges/`. Returns { [name]: badge }. */
 export async function buildBadges(distDir) {
   const outDir = join(distDir, URL_BASE);
   mkdirSync(outDir, { recursive: true });

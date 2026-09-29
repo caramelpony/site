@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "caramel-dog",
+  "compatibility_date": "2026-09-26",
+
+  // Static site only: no Worker script. Cloudflare serves dist/ straight from its edge,
+  // compresses responses itself, and applies headers from dist/_headers.
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths get dist/404.html with a 404 status.
+    "not_found_handling": "404-page",
+    // /about -> /about/, and serves about/index.html for it.
+    "html_handling": "auto-trailing-slash"
+  },
+
+  // Rebuild the site before every `wrangler deploy` / `wrangler dev`.
+  "build": {
+    "command": "npm run build"
+  },
+
+  "routes": [
+    { "pattern": "caramel.dog", "custom_domain": true },
+    { "pattern": "caramel.horse", "custom_domain": true }
+  ],
+
+  // Keep the free *.workers.dev URL too, handy for checking a deploy.
+  "workers_dev": true,
+  "preview_urls": true
+}

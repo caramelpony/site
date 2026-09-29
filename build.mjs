@@ -17,9 +17,11 @@ function ageOn(dob, date) {
   return date.getUTCFullYear() - y - (hadBirthday ? 0 : 1);
 }
 
-// Commit id: CI env var first, then local git, else "dev".
+// Commit id: CI env var first (COMMIT_SHA, or Cloudflare Workers Builds'
+// WORKERS_CI_COMMIT_SHA), then local git, else "dev".
 function commitId() {
-  if (process.env.COMMIT_SHA) return process.env.COMMIT_SHA.slice(0, 7);
+  const fromEnv = process.env.COMMIT_SHA || process.env.WORKERS_CI_COMMIT_SHA;
+  if (fromEnv) return fromEnv.slice(0, 7);
   try {
     return execFileSync("git", ["rev-parse", "--short", "HEAD"], { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
   } catch {

@@ -9,12 +9,14 @@
   },
   "scripts": {
     "build": "node build.mjs",
-    "serve": "npx --yes serve dist"
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "@microsoft/webui": "^0.0.30",
     "@tailwindcss/cli": "^4.3.3",
     "sharp": "^0.35.5",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "wrangler": "^4.143.0"
   }
 }

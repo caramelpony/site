@@ -2,6 +2,10 @@
 node_modules/
 dist/
 
+# wrangler local state and local secrets
+.wrangler/
+.dev.vars*
+
 # logs
 *.log
 npm-debug.log*
